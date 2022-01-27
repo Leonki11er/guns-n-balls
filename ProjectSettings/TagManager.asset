@@ -9,6 +9,7 @@ TagManager:
   - Roof
   - Brick
   - Ball
+  - Bullet
   layers:
   - Default
   - TransparentFX

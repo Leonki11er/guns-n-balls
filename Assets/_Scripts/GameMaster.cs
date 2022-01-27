@@ -9,21 +9,14 @@ public class GameMaster : MonoBehaviour
     public bool ActiveSpawner;
     public float SpawnCD;
     public float YspawnOffset;
-    
+    public float BulletSpeed;
+    public float BulletDamage;
+    public float BulletCount;
+    public float BulletFireRate;
     
     public float BallSpeed;
 
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
