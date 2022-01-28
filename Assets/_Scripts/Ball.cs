@@ -16,6 +16,9 @@ public class Ball : MonoBehaviour
     {
         if(collision.gameObject.tag == "Platform")
         {
+            Vector3 normal = collision.contacts[0].normal.normalized;
+            float dot = Vector3.Dot(normal, Vector3.up);
+            if (dot <= 0.8f) return;
             float x = hitFactor(transform.position, collision.transform.position, collision.collider.bounds.size.x);
             Debug.Log(x);
             Vector2 direction = new Vector2(x, 1).normalized;

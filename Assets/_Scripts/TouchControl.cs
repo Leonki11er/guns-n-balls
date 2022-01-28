@@ -44,7 +44,7 @@ public class TouchControl : MonoBehaviour
                 _touchMovePosition = theTouch.position;
                 Vector3 Current_pos = getTouchPosition(theTouch.position);
                 string currentTag = decideWhatIsTouched(_touchMovePosition);
-                if (currentTag == "Platform" && Current_pos.y < -3.2f)
+                if (currentTag == "Platform")
                 {
                     if (Mathf.Abs(_deltaPos) < 0.1f)
                     {

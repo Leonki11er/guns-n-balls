@@ -10,6 +10,7 @@ TagManager:
   - Brick
   - Ball
   - Bullet
+  - GameMaster
   layers:
   - Default
   - TransparentFX

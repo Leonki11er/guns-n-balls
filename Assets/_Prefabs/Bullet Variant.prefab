@@ -93,7 +93,21 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
+--- !u!136 &5643411165253363998
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6094056614656703045}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.006
+  m_Height: 0.05
+  m_Direction: 0
+  m_Center: {x: -0.012967637, y: -0.0050722067, z: -0.000000011874363}
 --- !u!114 &507507658
 MonoBehaviour:
   m_ObjectHideFlags: 0

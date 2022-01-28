@@ -13,28 +13,11 @@ public class BrickSpawner : MonoBehaviour
     {
         StartCoroutine(SpawnBricks());
     }
-
-    private void Update()
-    {
-        
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SpawnLine();
-        }
-    }
-    private void SpawnLine()
-    {
-        for (int i =0; i < 8; i++)
-        {
-            Instantiate(Brick, new Vector3(-2.4f + 0.8f * i, transform.position.y, transform.position.z), transform.rotation);
-        }
-    }
-
     private IEnumerator SpawnBricks()
     {
         while (GM.ActiveSpawner)
         {
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 7; i++)
             {
                 Instantiate(Brick, new Vector3(-2.4f + 0.8f * i, transform.position.y-GM.YspawnOffset, transform.position.z), transform.rotation);
             }

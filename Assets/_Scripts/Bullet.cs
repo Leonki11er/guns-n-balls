@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
 
     void Start()
     {
-        GM = GameObject.Find("Roof").GetComponent<GameMaster>();
+        GM = GameObject.Find("GameMaster").GetComponent<GameMaster>();
     }
 
     private void FixedUpdate()
