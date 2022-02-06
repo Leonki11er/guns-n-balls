@@ -5,6 +5,7 @@ using UnityEngine;
 public class TouchControl : MonoBehaviour
 {
     public GameObject Platform;
+    public GameObject Crosshair;
     private Vector2 _touchStartPosition,  _touchMovePosition;
     private bool _ppos;
     private float _deltaPos;
@@ -20,6 +21,7 @@ public class TouchControl : MonoBehaviour
         while (i < Input.touchCount)
         {
             Touch theTouch = Input.GetTouch(i);
+            MoveCrosshair(theTouch);
             if (theTouch.phase == TouchPhase.Began)
             {
                 _touchStartPosition = theTouch.position;
@@ -41,6 +43,7 @@ public class TouchControl : MonoBehaviour
             }
             else if (theTouch.phase == TouchPhase.Moved)
             {
+                MoveCrosshair(theTouch);
                 _touchMovePosition = theTouch.position;
                 Vector3 Current_pos = getTouchPosition(theTouch.position);
                 string currentTag = decideWhatIsTouched(_touchMovePosition);
@@ -72,6 +75,12 @@ public class TouchControl : MonoBehaviour
             obj = rchInfo.collider.gameObject;
         }
         return obj;
+    }
+    private void MoveCrosshair(Touch t)
+    {
+        Vector3 pos = Camera.main.ScreenToWorldPoint(new Vector3(t.position.x, t.position.y, 0f));
+        if (pos.y < -2f) return;
+        Crosshair.transform.position = new Vector3(pos.x, pos.y, Crosshair.transform.position.z);
     }
     private void MovePaddleCenter(Touch theTouch)
     {

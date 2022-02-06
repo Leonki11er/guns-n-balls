@@ -7,13 +7,12 @@ public class Machinegun : MonoBehaviour
 
     public GameMaster GM;
     public GameObject Bullet;
-    private Quaternion quaternion;
+    public GameObject RightMG;
     private Vector3 _rightMGoffset;
     
 
     void Start()
     {
-        quaternion = new Quaternion(-1, 1, -1, 1);
         GM = GameObject.Find("GameMaster").GetComponent<GameMaster>();
         _rightMGoffset = new Vector3(1.79f, 0, 0);
     }
@@ -21,25 +20,20 @@ public class Machinegun : MonoBehaviour
 
     public void FireMG()
     {
+        if (!GM.Firing) return;
         StartCoroutine(BulletVolley());
     }
     
 
     private IEnumerator BulletVolley()
     {
-        if (GM.Firing)
-        {
             GM.Firing = false;
             for (int i = 0; i < GM.BulletCount; i++)
             {
-                Instantiate(Bullet, transform.position, quaternion);
-                Instantiate(Bullet, transform.position+ _rightMGoffset, quaternion);
+                Instantiate(Bullet, transform.position, transform.rotation);
+                Instantiate(Bullet, RightMG.transform.position, RightMG.transform.rotation);
                 yield return new WaitForSeconds(GM.BulletFireRate);
             }
             GM.Firing = true;
-        }
-        
-            
-       
     }
 }

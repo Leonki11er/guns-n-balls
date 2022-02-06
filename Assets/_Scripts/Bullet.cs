@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public GameMaster GM;
-    
-
-
+    private  GameMaster GM;
+    private Rigidbody _rigidbody;
     void Start()
     {
         GM = GameObject.Find("GameMaster").GetComponent<GameMaster>();
+        _rigidbody = gameObject.GetComponent<Rigidbody>();
+       
     }
 
     private void FixedUpdate()
     {
-        gameObject.transform.position = gameObject.transform.position + new Vector3(0, GM.BulletSpeed, 0);
+        gameObject.transform.position = gameObject.transform.position +transform.forward*GM.BulletSpeed;
+       
     }
 }

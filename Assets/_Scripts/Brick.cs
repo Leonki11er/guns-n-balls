@@ -42,6 +42,7 @@ public class Brick : MonoBehaviour
         if (other.gameObject.tag == "Bullet")
         {
             TakeDamage(GM.BulletDamage);
+            Destroy(other.gameObject);
         }
     }
 
@@ -53,9 +54,8 @@ public class Brick : MonoBehaviour
             BrickDeath();
         }else
         SetBrickColor(_health);
-        
-
     }
+
 
     private void BrickDeath()
     {

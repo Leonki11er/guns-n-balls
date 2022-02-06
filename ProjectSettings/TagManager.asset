@@ -11,6 +11,7 @@ TagManager:
   - Ball
   - Bullet
   - GameMaster
+  - Rocket
   layers:
   - Default
   - TransparentFX
