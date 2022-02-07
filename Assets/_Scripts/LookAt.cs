@@ -5,7 +5,7 @@ using UnityEngine;
 public class LookAt : MonoBehaviour
 {
     public Transform Target;
-    new Vector3 target;
+    private Vector3 target;
 
     private void Update()
     {

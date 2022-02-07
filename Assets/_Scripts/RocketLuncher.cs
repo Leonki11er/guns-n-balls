@@ -6,7 +6,6 @@ public class RocketLuncher : MonoBehaviour
 {
     public GameMaster GM;
     public GameObject Rocket;
-    private Quaternion quaternion;
 
     public void FireRL()
     {
