@@ -13,7 +13,7 @@ public class Rocket : MonoBehaviour
 
     private void FixedUpdate()
     {
-        gameObject.transform.position = gameObject.transform.position + new Vector3(0, GM.RocketSpeed, 0);
+        gameObject.transform.position = gameObject.transform.position + transform.forward * GM.RocketSpeed;
     }
 
     private void OnTriggerEnter(Collider other)

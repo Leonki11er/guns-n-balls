@@ -8,11 +8,6 @@ public class RocketLuncher : MonoBehaviour
     public GameObject Rocket;
     private Quaternion quaternion;
 
-    private void Start()
-    {
-        quaternion = new Quaternion(0, 0, 0, 1);
-    }
-
     public void FireRL()
     {
         if (!GM.Firing) return;
@@ -25,7 +20,7 @@ public class RocketLuncher : MonoBehaviour
         GM.Firing = false;
         for (int i = 0; i < GM.RocketCount; i++)
         {
-            Instantiate(Rocket, transform.position, quaternion);
+            Instantiate(Rocket, transform.position, transform.rotation);
             
             yield return new WaitForSeconds(GM.RocketFireRate);
         }

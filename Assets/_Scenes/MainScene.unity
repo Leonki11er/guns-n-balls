@@ -309,7 +309,7 @@ GameObject:
   - component: {fileID: 119177195}
   - component: {fileID: 119177196}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: MachineGunR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -322,7 +322,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 119177194}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: 0, w: -0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.4870582, y: 0.5294607, z: 0}
   m_LocalScale: {x: 4.219409, y: 4.2194066, z: 4.219407}
   m_Children:
@@ -1397,7 +1397,7 @@ GameObject:
   - component: {fileID: 734071170}
   - component: {fileID: 734071171}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: MachineGunL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1410,7 +1410,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 734071168}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: 0, w: -0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.053291, y: 0.5294605, z: 0}
   m_LocalScale: {x: 4.219409, y: 4.2194066, z: 4.2194066}
   m_Children:
@@ -2078,6 +2078,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1595777892}
   - component: {fileID: 1595777893}
+  - component: {fileID: 1595777894}
   m_Layer: 0
   m_Name: RocketLuncher
   m_TagString: Untagged
@@ -2112,7 +2113,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GM: {fileID: 1801643507}
-  Rocket: {fileID: 8445575166264060128, guid: e8f1f191bb7cd3e4c97d49d8b4ff926c, type: 3}
+  Rocket: {fileID: 6341684197853555024, guid: d3fd03731b899ad4c91dd0ab6d5f358b, type: 3}
+--- !u!114 &1595777894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595777891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eee4135e34f29954ebed595e36e8c9ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 316172357}
 --- !u!1 &1611608075
 GameObject:
   m_ObjectHideFlags: 0
