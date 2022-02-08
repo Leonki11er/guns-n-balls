@@ -6,6 +6,9 @@ public class Brick : MonoBehaviour
 {
     public GameMaster GM;
     private float _health;
+    public float ScaleModifier = 1;
+    public float TargetScale;
+    public float TimeToLerp = 0.25f;
 
     [SerializeField]    
     private Material _material;
@@ -56,6 +59,41 @@ public class Brick : MonoBehaviour
         SetBrickColor(_health);
     }
 
+    IEnumerator LerpFunction(float endValue, float duration)
+    {
+        float time = 0;
+        float startValue = ScaleModifier;
+        Vector3 startScale = transform.localScale;
+        while (time < duration)
+        {
+            ScaleModifier = Mathf.Lerp(startValue, endValue, time / duration);
+            transform.localScale = startScale * ScaleModifier;
+            time += Time.deltaTime;
+            yield return null;
+        }
+        transform.localScale = startScale * TargetScale;
+        ScaleModifier = TargetScale;
+    }
+
+    IEnumerator LerpPosition(Vector3 targetPosition, float duration)
+    {
+        float time = 0;
+        Vector3 startPosition = transform.position;
+        while (time < duration)
+        {
+            transform.position = Vector3.Lerp(startPosition, targetPosition, time*3f / duration);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        transform.position = targetPosition;
+    }
+
+    public void VoidContact(Vector3 voidCenter)
+    {
+        StartCoroutine(LerpPosition(voidCenter, 5));
+        StartCoroutine(LerpFunction(TargetScale, TimeToLerp));
+
+    }
 
     private void BrickDeath()
     {

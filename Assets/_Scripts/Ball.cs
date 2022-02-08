@@ -20,12 +20,8 @@ public class Ball : MonoBehaviour
             float dot = Vector3.Dot(normal, Vector3.up);
             if (dot <= 0.8f) return;
             float x = hitFactor(transform.position, collision.transform.position, collision.collider.bounds.size.x);
-            Debug.Log(x);
             Vector2 direction = new Vector2(x, 1).normalized;
             BallRB.velocity = direction * GM.BallSpeed;
-        }else if (collision.gameObject.tag == "Brick")
-        {
-
         }
     }
     private float hitFactor(Vector2 ballPos, Vector2 platformPos, float platformWidth)

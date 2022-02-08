@@ -6,6 +6,7 @@ public class VoidCannon : MonoBehaviour
 {
     public GameMaster GM;
     public GameObject BlackHole;
+    public float Zoffset;
 
     public void FireVC()
     {
@@ -18,7 +19,7 @@ public class VoidCannon : MonoBehaviour
     {
         GM.Firing = false;
         
-            Instantiate(BlackHole, transform.position, transform.rotation);
+            Instantiate(BlackHole, transform.position+new Vector3(0f,0f,Zoffset), transform.rotation);
 
             yield return new WaitForSeconds(GM.VoidCD);
        
