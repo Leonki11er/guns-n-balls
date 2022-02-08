@@ -17,19 +17,23 @@ public class GameMaster : MonoBehaviour
     public float BulletDamage;
     public float BulletCount;
     public float BulletFireRate;
+    public float MGcd;
 
     public float RocketSpeed;
     public float RocketDamage;
     public float RocketCount;
     public float RocketFireRate;
     public float RocketBlastRadius;
+    public float RocketCD;
 
     public float VoidSpeed;
     public float VoidRadius;
     public float VoidCD;
+    public float VoidActiveTime;
 
 
     public float BallSpeed;
+    
 
     private void Start()
     {

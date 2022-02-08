@@ -1,18 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class VoidCannon : MonoBehaviour
 {
     public GameMaster GM;
     public GameObject BlackHole;
     public float Zoffset;
+    public Button BH_button;
+    float voidCD;
 
+    private void Start()
+    {
+        voidCD = GM.VoidCD;
+    }
     public void FireVC()
     {
-        if (!GM.Firing) return;
-        StartCoroutine(LunchVoid());
+        if (!GM.Firing||voidCD<GM.VoidCD) return;
 
+        StartCoroutine(LunchVoid());
+        StartCoroutine(VoidCoolDown(GM.VoidCD));
+
+    }
+
+    private IEnumerator VoidCoolDown(float cooldown)
+    {
+       voidCD = 0;
+        while (voidCD < cooldown)
+        {
+            voidCD += Time.deltaTime;
+            BH_button.image.fillAmount = Mathf.InverseLerp(0f, cooldown, voidCD);
+            yield return null;
+        }
     }
 
     private IEnumerator LunchVoid()
@@ -21,8 +41,6 @@ public class VoidCannon : MonoBehaviour
         
             Instantiate(BlackHole, transform.position+new Vector3(0f,0f,Zoffset), transform.rotation);
 
-            yield return new WaitForSeconds(GM.VoidCD);
-       
-        GM.Firing = true;
+            yield return null;
     }
 }

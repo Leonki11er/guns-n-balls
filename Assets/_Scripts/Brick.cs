@@ -69,10 +69,12 @@ public class Brick : MonoBehaviour
             ScaleModifier = Mathf.Lerp(startValue, endValue, time / duration);
             transform.localScale = startScale * ScaleModifier;
             time += Time.deltaTime;
+            transform.Rotate(1f, 1f, 1f);
             yield return null;
         }
         transform.localScale = startScale * TargetScale;
         ScaleModifier = TargetScale;
+        BrickDeath();
     }
 
     IEnumerator LerpPosition(Vector3 targetPosition, float duration)
@@ -97,6 +99,7 @@ public class Brick : MonoBehaviour
 
     private void BrickDeath()
     {
+       
         Destroy(gameObject);
     }
 

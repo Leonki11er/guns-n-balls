@@ -21,14 +21,18 @@ public class BlackHole : MonoBehaviour
         if (other.gameObject.tag != "Brick") return;
         _isMoving = false;
         ActivateVoid();
-        Destroy(gameObject,3f);
+        StartCoroutine(VoidFireDelay());
+        Destroy(gameObject, GM.VoidActiveTime+0.2f);
     }
     private void FixedUpdate()
     {
         MoveVoid();
+    }
 
-
-
+    private IEnumerator VoidFireDelay()
+    {
+        yield return new WaitForSeconds(GM.VoidActiveTime);
+        GM.Firing = true;
     }
 
     private void MoveVoid()
@@ -51,8 +55,8 @@ public class BlackHole : MonoBehaviour
             Brick brick = hit[i].GetComponent<Brick>();
             if (brick != null)
             {
+                hit[i].GetComponent<BoxCollider>().enabled = false;
                 brick.VoidContact(transform.position);
-                //brick.TakeDamage(GM.RocketDamage);
             }
         }
     }
