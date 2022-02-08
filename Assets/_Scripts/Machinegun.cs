@@ -11,13 +11,13 @@ public class Machinegun : MonoBehaviour
     public GameObject RightMG;
     public Button MG_button;
     float mgCD;
-
+    private AudioSource _audioSource;
 
 
 
     void Start()
     {
-         
+        _audioSource = GetComponent<AudioSource>();
         GM = GameObject.Find("GameMaster").GetComponent<GameMaster>();
         mgCD = GM.MGcd;
     }
@@ -44,6 +44,8 @@ public class Machinegun : MonoBehaviour
     private IEnumerator BulletVolley()
     {
             GM.Firing = false;
+        _audioSource.Play();
+        
             for (int i = 0; i < GM.BulletCount; i++)
             {
                 Instantiate(Bullet, transform.position, transform.rotation);
@@ -51,5 +53,6 @@ public class Machinegun : MonoBehaviour
                 yield return new WaitForSeconds(GM.BulletFireRate);
             }
             GM.Firing = true;
+        _audioSource.Stop();
     }
 }

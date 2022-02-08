@@ -16,4 +16,8 @@ public class Bullet : MonoBehaviour
         gameObject.transform.position = gameObject.transform.position +transform.forward*GM.BulletSpeed;
        
     }
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
 }

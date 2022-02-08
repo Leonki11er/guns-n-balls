@@ -24,6 +24,7 @@ public class Rocket : MonoBehaviour
     }
     private void RocketBlast()
     {
+        GM.RocketBlastSound();
         Collider[] hit = Physics.OverlapSphere(transform.position, GM.RocketBlastRadius);
         if (hit.Length == 0) return;
 
@@ -35,5 +36,9 @@ public class Rocket : MonoBehaviour
                 brick.TakeDamage(GM.RocketDamage);
             }
         }
+    }
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
     }
 }

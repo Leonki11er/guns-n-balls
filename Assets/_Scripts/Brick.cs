@@ -99,7 +99,7 @@ public class Brick : MonoBehaviour
 
     private void BrickDeath()
     {
-       
+        GM.IncrementScore();
         Destroy(gameObject);
     }
 

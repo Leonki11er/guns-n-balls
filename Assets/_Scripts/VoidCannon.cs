@@ -10,15 +10,16 @@ public class VoidCannon : MonoBehaviour
     public float Zoffset;
     public Button BH_button;
     float voidCD;
-
+    private AudioSource _audioSource;
     private void Start()
     {
         voidCD = GM.VoidCD;
+        _audioSource = GetComponent<AudioSource>();
     }
     public void FireVC()
     {
         if (!GM.Firing||voidCD<GM.VoidCD) return;
-
+        _audioSource.Play();
         StartCoroutine(LunchVoid());
         StartCoroutine(VoidCoolDown(GM.VoidCD));
 

@@ -12,6 +12,7 @@ TagManager:
   - Bullet
   - GameMaster
   - Rocket
+  - Floor
   layers:
   - Default
   - TransparentFX

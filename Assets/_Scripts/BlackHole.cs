@@ -8,12 +8,15 @@ public class BlackHole : MonoBehaviour
     public GameObject Swirl;
     private bool _isMoving;
     private bool _isVoid;
+    private AudioSource _audioSource;
+
 
     void Start()
     {
         GM = GameObject.Find("GameMaster").GetComponent<GameMaster>();
         _isMoving = true;
         _isVoid = true;
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -31,8 +34,10 @@ public class BlackHole : MonoBehaviour
 
     private IEnumerator VoidFireDelay()
     {
+        _audioSource.Play();
         yield return new WaitForSeconds(GM.VoidActiveTime);
         GM.Firing = true;
+        _audioSource.Stop();
     }
 
     private void MoveVoid()
@@ -59,5 +64,12 @@ public class BlackHole : MonoBehaviour
                 brick.VoidContact(transform.position);
             }
         }
+    }
+
+    private void OnBecameInvisible()
+    {
+        Debug.Log("MISS");
+        GM.Firing = true;
+        Destroy(gameObject);
     }
 }
