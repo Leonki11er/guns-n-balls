@@ -33,13 +33,13 @@ public class GameMaster : MonoBehaviour
     public float VoidCD;
     public float VoidActiveTime;
 
-    public float ScoreToWin;
-    public float ScoreMultiplier;
-    public float CurrentScore;
+    public int ScoreToWin;
+    public int ScoreMultiplier;
+    public int CurrentScore;
 
     private AudioSource[] allAudioSources;
     public RocketLuncher RL;
-
+   
 
     public UiManager UI;
     public State CurrentState { get; private set; }
@@ -56,6 +56,8 @@ public class GameMaster : MonoBehaviour
         ScoreToWin = ScoreMultiplier * (LevelIndex + 1);
         Firing = true;
         UI.SetProgress(CurrentScore);
+        UI.SetWinScr(ScoreToWin);
+
     }
    
     public void MuteAll()
@@ -118,6 +120,7 @@ public class GameMaster : MonoBehaviour
     {
         CurrentScore++;
         UI.SetProgress(CurrentScore);
+        UI.SetCurScr(CurrentScore);
         if (CurrentScore >= ScoreToWin)
         {
             OnPlayerWin();

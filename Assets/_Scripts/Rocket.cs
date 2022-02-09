@@ -5,6 +5,7 @@ using UnityEngine;
 public class Rocket : MonoBehaviour
 {
     private GameMaster GM;
+    public GameObject Blast;
 
     void Start()
     {
@@ -27,6 +28,7 @@ public class Rocket : MonoBehaviour
         GM.RocketBlastSound();
         Collider[] hit = Physics.OverlapSphere(transform.position, GM.RocketBlastRadius);
         if (hit.Length == 0) return;
+        Instantiate(Blast, transform.position, transform.rotation);
 
         for (int i = 0; i < hit.Length; i++)
         {

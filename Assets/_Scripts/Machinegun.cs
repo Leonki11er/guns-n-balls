@@ -12,6 +12,8 @@ public class Machinegun : MonoBehaviour
     public Button MG_button;
     float mgCD;
     private AudioSource _audioSource;
+    public ParticleSystem ShootigEffectL;
+    public ParticleSystem ShootigEffectR;
 
 
 
@@ -48,7 +50,9 @@ public class Machinegun : MonoBehaviour
         
             for (int i = 0; i < GM.BulletCount; i++)
             {
-                Instantiate(Bullet, transform.position, transform.rotation);
+            ShootigEffectL.Play();
+            ShootigEffectR.Play();
+            Instantiate(Bullet, transform.position, transform.rotation);
                 Instantiate(Bullet, RightMG.transform.position, RightMG.transform.rotation);
                 yield return new WaitForSeconds(GM.BulletFireRate);
             }

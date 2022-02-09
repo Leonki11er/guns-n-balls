@@ -9,6 +9,7 @@ public class Brick : MonoBehaviour
     public float ScaleModifier = 1;
     public float TargetScale;
     public float TimeToLerp = 0.25f;
+    public ParticleSystem DmgEffect;
 
     [SerializeField]    
     private Material _material;
@@ -46,12 +47,16 @@ public class Brick : MonoBehaviour
         {
             TakeDamage(GM.BulletDamage);
             Destroy(other.gameObject);
+        }else if(other.gameObject.tag == "Floor")
+        {
+            GM.OnPlayerDied();
         }
     }
 
     public void TakeDamage(float damage)
     {
         _health -= damage;
+        DmgEffect.Play();
         if (_health < 0)
         {
             BrickDeath();
@@ -94,7 +99,6 @@ public class Brick : MonoBehaviour
     {
         StartCoroutine(LerpPosition(voidCenter, 5));
         StartCoroutine(LerpFunction(TargetScale, TimeToLerp));
-
     }
 
     private void BrickDeath()

@@ -22,7 +22,11 @@ public class Ball : MonoBehaviour
             float x = hitFactor(transform.position, collision.transform.position, collision.collider.bounds.size.x);
             Vector2 direction = new Vector2(x, 1).normalized;
             BallRB.velocity = direction * GM.BallSpeed;
-        }else if(collision.gameObject.tag == "Floor")
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Floor")
         {
             GM.OnPlayerDied();
         }

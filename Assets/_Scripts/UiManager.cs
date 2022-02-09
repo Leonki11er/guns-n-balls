@@ -12,6 +12,8 @@ public class UiManager : MonoBehaviour
     public GameObject WinPanel;
     public GameObject LosePanel;
     public GameObject PausePanel;
+    public Text CurScore;
+    public Text ScrToWin;
 
     private void Start()
     {
@@ -42,6 +44,16 @@ public class UiManager : MonoBehaviour
         Time.timeScale = 1f;
         PausePanel.SetActive(false);
 
+    }
+
+    public void SetCurScr(int score)
+    {
+        CurScore.text = score.ToString();
+    }
+
+    public void SetWinScr(int score)
+    {
+        ScrToWin.text = score.ToString();
     }
 
     public void SetProgress(float score)
